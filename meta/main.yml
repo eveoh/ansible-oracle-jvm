@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Mark Janssen
+  description: Ansible Oracle JVM for Debian and Ubuntu using webupd8team PPA
+  license: MIT
+  min_ansible_version: 1.8
+  platforms:
+  - name: Ubuntu
+    versions:
+      - utopic
+  - name: Debian
+    versions:
+      - wheezy
+      - jessie
+  categories:
+   - development
+   - packaging
+   - system
+dependencies: []

@@ -1,0 +1,21 @@
+---
+# tasks file for praseodym.oracle-jvm
+
+- name: add jvm repository key
+  apt_key: id=EEA14886 keyserver=keyserver.ubuntu.com state=present
+
+- name: add jvm repository to sources
+  apt_repository: repo='{{ item }}' state=present update_cache=yes
+  with_items:
+  - deb http://ppa.launchpad.net/webupd8team/java/ubuntu utopic main
+  - deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu utopic main
+
+- name: autoaccept license for oracle java 8
+  debconf: name=oracle-java8-installer question=shared/accepted-oracle-license-v1-1 value=true vtype=select
+
+- name: install oracle java 8
+  action: apt pkg={{ item }} state=latest
+  with_items:
+  - oracle-java8-installer
+  - oracle-java8-set-default
+  - oracle-java8-unlimited-jce-policy
