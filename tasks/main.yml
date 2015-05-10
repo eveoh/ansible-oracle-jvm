@@ -16,6 +16,10 @@
 - name: install oracle java 8
   action: apt pkg={{ item }} state=latest
   with_items:
+  - ca-certificates-java
   - oracle-java8-installer
   - oracle-java8-set-default
   - oracle-java8-unlimited-jce-policy
+
+- name: symlink jvm cacerts
+  file: src=/etc/ssl/certs/java/cacerts dest=/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts owner=root group=root state=link force=yes
