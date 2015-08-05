@@ -10,7 +10,7 @@ galaxy_info:
       - trusty
       - utopic
       - vivid
-      - willy
+      - wily
   - name: Debian
     versions:
       - wheezy
